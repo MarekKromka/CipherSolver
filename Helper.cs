@@ -46,5 +46,9 @@ namespace CiphersSolvers
             return new string(text.Where(char.IsLetter).ToArray()).ToUpper();
         }
 
+        public static double Mod(double a, double b)
+        {
+            return ((a % b + b) % b);
+        }
     }
 }

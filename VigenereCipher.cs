@@ -113,7 +113,7 @@ namespace CiphersSolvers
                     int keyIndex = (i - nonAlphaCharCount) % Key.Length;
                     int k = (cIsUpper ? char.ToUpper(Key[keyIndex]) : char.ToLower(Key[keyIndex])) - offset;
                     k = encrypt ? k : -k;
-                    char ch = (char)((Mod(((text[i] + k) - offset), 26)) + offset);
+                    char ch = (char)((Helper.Mod(((text[i] + k) - offset), 26)) + offset);
                     output += ch;
                 }
                 else
@@ -124,11 +124,6 @@ namespace CiphersSolvers
             }
 
             return output;
-        }
-
-        private static int Mod(int a, int b)
-        {
-            return (a % b + b) % b;
         }
     }
 }

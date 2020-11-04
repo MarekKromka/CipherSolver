@@ -35,6 +35,12 @@ namespace VigenereCipherSolver
         /// <param name="type">What kind of Ciphres you want to use to Encrypt/decrypt
         static void Main(string input, CipherEnum type)
         {
+            //var sr = new StreamReader("..//..//..//test//testStream2.txt");
+            //var encryptedText = sr.ReadToEnd();
+
+            //var cipher = new StreamCipher();
+            //cipher.Cipher(encryptedText, false);
+
             var sr = new StreamReader(input);
             var encryptedText = sr.ReadToEnd();
 
@@ -50,6 +56,12 @@ namespace VigenereCipherSolver
                 case CipherEnum.VIGENERE:
                     cipher = new VigenereCipher(encrypt, encryptedText);
                     break;
+                case CipherEnum.HILL:
+                    cipher = new HillCipher();
+                    break;
+                case CipherEnum.STREAM:
+                    cipher = new StreamCipher(encryptedText);
+                    break;
                 default:
                     Console.WriteLine("Please select one of the provided ciphers!");
                     Environment.Exit(99);
@@ -59,5 +71,5 @@ namespace VigenereCipherSolver
             Console.WriteLine(cipher.Cipher(encryptedText, encrypt));
         }
 
-    }
+        }
 }

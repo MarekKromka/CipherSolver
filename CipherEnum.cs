@@ -7,6 +7,8 @@ namespace CiphersSolvers
     public enum CipherEnum
     {
         CAESAR,
-        VIGENERE
+        VIGENERE,
+        HILL,
+        STREAM
     }
 }
