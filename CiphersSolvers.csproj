@@ -6,6 +6,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Combinatorics" Version="1.1.0.19" />
+    <PackageReference Include="Extreme.Numerics" Version="7.0.17" />
     <PackageReference Include="Microsoft.Extensions.Configuration.CommandLine" Version="3.1.9" />
     <PackageReference Include="System.CommandLine.DragonFruit" Version="0.3.0-alpha.20371.2" />
   </ItemGroup>

@@ -9,6 +9,7 @@ namespace CiphersSolvers
         CAESAR,
         VIGENERE,
         HILL,
-        STREAM
+        STREAM,
+        RSA
     }
 }

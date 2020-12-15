@@ -49,6 +49,8 @@ namespace CiphersSolvers
 
         private void BruteForce(int from, int to)
         {
+            var s = new Spinner(Console.CursorLeft,Console.CursorTop);
+            s.Start();
             for (int j = from; j < to; j++)
             {
                 SetSeed(j);
@@ -77,6 +79,7 @@ namespace CiphersSolvers
                     best.Add(j,"IC: "+ ic.ToString().Substring(0,5) + " SAMPLE: " + cipherText.Substring(0, 60));
                 }
             }
+            s.Stop();
         }
 
         private void SetKey()

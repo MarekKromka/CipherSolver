@@ -6,7 +6,11 @@ using System.Linq;
 using System.Text;
 
 using System.CommandLine.DragonFruit;
+using System.Threading.Tasks;
 using CiphersSolvers;
+using Combinatorics.Collections;
+using Extreme.Mathematics;
+using BigInteger = System.Numerics.BigInteger;
 
 namespace VigenereCipherSolver
 {
@@ -35,40 +39,59 @@ namespace VigenereCipherSolver
         /// <param name="type">What kind of Ciphres you want to use to Encrypt/decrypt
         static void Main(string input, CipherEnum type)
         {
-            //var sr = new StreamReader("..//..//..//test//testStream2.txt");
+            //5. semestralka
+
+            for (int i = 2; i < 5; i++)
+            {
+                
+                var sr = new StreamReader($"..//..//..//test//shadow{i}.txt");
+                var encryptedText = sr.ReadToEnd();
+                encryptedText = encryptedText.Replace('\n', ':');
+                var MD5Bruteforce = new MD5Bruteforce(i);
+                Console.WriteLine($"Shadow{i} started");
+                Console.WriteLine(MD5Bruteforce.Cipher(encryptedText, false));
+                //var task = Task.Factory.StartNew(() => MD5Bruteforce.Cipher(encryptedText, false));
+                
+                //tasks[i - 1] = task;
+            }
+
+            //Task.WaitAll(tasks);
+
+            //4. semka
+            //var cipher = new RSACipher(BigInteger.Parse("56341958081545199783"), 65537);
+            //cipher.Cipher("17014716723435111315", false);
+
+            //var sr = new StreamReader(input);
             //var encryptedText = sr.ReadToEnd();
 
-            //var cipher = new StreamCipher();
-            //cipher.Cipher(encryptedText, false);
+            //Console.WriteLine("Do you want encrypt or decrypt (y - encrypt, n - decrypt) ?");
+            //var encrypt = Console.ReadLine().ToLower().StartsWith("y");
 
-            var sr = new StreamReader(input);
-            var encryptedText = sr.ReadToEnd();
-
-            Console.WriteLine("Do you want encrypt or decrypt (y - encrypt, n - decrypt) ?");
-            var encrypt = Console.ReadLine().ToLower().StartsWith("y");
-
-            ICipher cipher = null;
-            switch (type)
-            {
-                case CipherEnum.CAESAR:
-                    cipher = new CaesarCipher();
-                    break;
-                case CipherEnum.VIGENERE:
-                    cipher = new VigenereCipher(encrypt, encryptedText);
-                    break;
-                case CipherEnum.HILL:
-                    cipher = new HillCipher();
-                    break;
-                case CipherEnum.STREAM:
-                    cipher = new StreamCipher(encryptedText);
-                    break;
-                default:
-                    Console.WriteLine("Please select one of the provided ciphers!");
-                    Environment.Exit(99);
-                    break;
-            }
-            Console.WriteLine("Text: ");
-            Console.WriteLine(cipher.Cipher(encryptedText, encrypt));
+            //ICipher cipher = null;
+            //switch (type)
+            //{
+            //    case CipherEnum.CAESAR:
+            //        cipher = new CaesarCipher();
+            //        break;
+            //    case CipherEnum.VIGENERE:
+            //        cipher = new VigenereCipher(encrypt, encryptedText);
+            //        break;
+            //    case CipherEnum.HILL:
+            //        cipher = new HillCipher();
+            //        break;
+            //    case CipherEnum.STREAM:
+            //        cipher = new StreamCipher(encryptedText);
+            //        break;
+            //    case CipherEnum.RSA:
+            //        cipher = new RSACipher(43811,7);
+            //        break;
+            //    default:
+            //        Console.WriteLine("Please select one of the provided ciphers!");
+            //        Environment.Exit(99);
+            //        break;
+            //}
+            //Console.WriteLine("Text: ");
+            //Console.WriteLine(cipher.Cipher(encryptedText, encrypt));
         }
 
         }
